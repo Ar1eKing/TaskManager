@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
 
 namespace TaskManager.ViewModel
 {
@@ -7,13 +9,17 @@ namespace TaskManager.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public RelayCommand CloseProgramCommand { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-
+            CloseProgramCommand = new RelayCommand(CloseProgram);
         }
+
+        private void CloseProgram() => Environment.Exit(0);
 
         public override void Cleanup()
         {
